@@ -35,7 +35,7 @@ public class Handler implements IHandler {
                 LOGGER.info("Ping command will be executed");
                 Document pong = command.execute();
                 result = pong.toJson();
-                LOGGER.info("Result of PING Command = " + result);
+                LOGGER.info("Result of PING Command PONG = " + result);
                 break;
         }
         return result;

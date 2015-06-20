@@ -28,9 +28,11 @@ public class PingImplCommand implements ICommand {
         final Bson filter = (BasicDBObject) BasicDBObjectBuilder.start().append("sessionId", sessionId).get();
         final long count = users.count(filter);
         LOGGER.info("Get user with sessionId= " + sessionId + " and count=" + count);
-        ping.put("commandType", CommandType.PONG.toString());
-        ping.put("pingCount", String.valueOf(count));
-        return ping;
+        Document pong = ping;
+        pong.put("commandType", CommandType.PONG.toString());
+        pong.put("pingCount", String.valueOf(count));
+        pong.remove("_id");
+        return pong;
     }
 
 }
